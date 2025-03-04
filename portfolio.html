@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyam Gupta - Portfolio</title>
+    <!-- Adding Google Fonts to match the elegant style in the images -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: normal;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: #5d76e0;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            background-color: #f5f5f5;
+        }
+        
+        .hero-content {
+            width: 70%;
+            padding: 40px;
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        .hero-image {
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+            background-position: center;
+            width: 70%;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            margin-top: 200px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hero h3 {
+            font-style: italic;
+            font-weight: normal;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 30%;
+            background-color: #5d76e0;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 0;
+            margin: 0 auto 20px;
+            overflow: hidden; /* Ensures image doesn't exceed the container */
+        }
+        
+        .profile-img img {
+            width: 100%; /* Fill width of container */
+            height: 100%; /* Fill height of container */
+            object-fit: cover; /* Crop image to cover entire area while maintaining aspect ratio */
+            object-position: center; /* Center the image */
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .sidebar p {
+            margin-bottom: 5px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+        
+        .btn {
+            background-color: white;
+            color: #5d76e0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 40px;
+        }
+        
+        .section-title {
+            color: #5d76e0;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: normal;
+        }
+        
+        .section-subtitle {
+            color: #888;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+        }
+        
+        /* Education & Experience */
+        .education, .experience {
+            width: 48%;
+        }
+        
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item h4 {
+            margin-bottom: 5px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+        }
+        
+        .timeline-item p {
+            margin-bottom: 3px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        /* Skills */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: inline-block;
+            width: 200px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .skill-bar {
+            display: inline-block;
+            height: 2px;
+            background-color: #5d76e0;
+            vertical-align: middle;
+        }
+        
+        /* Awards & Interests */
+        .awards-interests {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .awards, .interests {
+            width: 48%;
+        }
+        
+        .awards ul, .interests ul {
+            list-style: none;
+        }
+        
+        .awards li, .interests li {
+            margin-bottom: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f0f4ff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .footer-message {
+            margin-bottom: 20px;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+        }
+        
+        .contact-links {
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #666;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #5d76e0;
+            color: #5d76e0;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education-experience">Education & Experience</a></li>
+                <li><a href="#skills">Skills & Languages</a></li>
+                <li><a href="#awards-interests">Awards & Interests</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HELLO, I'M<br>Satyam Gupta.</h1>
+            <h3>Web Developer .</h3>
+        </div>
+        <div class="sidebar">
+            <div class="profile-img">
+                <img src="{{ url_for('static', filename='images/my_image.jpg') }}" alt="Satyam Gupta">            </div>
+            <h2>Satyam Gupta.</h2>
+            <p>B.Sc.- Computer Science</p>
+            <p>Mumbai, Maharashtra</p>
+            
+            <div class="contact-info">
+                <p>compareself@gmail.com</p>
+                <p>(91) 7839059369</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/satyam-gupta-54549b34b "><span>in</span></a>
+                <a href="#"><span>f</span></a>
+                <a href="#"><span>t</span></a>
+                <a href="#"><span>ig</span></a>
+            </div>
+            
+            <a href="https://github.com/SatyamGupta78/Imp-Files/blob/main/Resume_Satyam.pdf" class="btn">Download CV</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About</h2>
+        <h3 class="section-subtitle">MY BACKGROUND</h3>
+        <p>I am Satyam Gupta, a passionate Web Developer and UI/UX Designer. 
+            I have expertise in developing efficient, user-friendly websites and designing intuitive user interfaces..
+            With a Bachelor's degree in Computer Science and hands-on experience in websites development,
+             I have worked on projects ranging from standalone Websites to Landing Page.
+             I bring a blend of technical skills and design sensibility to create impactful digital experiences. 
+             My aim is to solve real-world problems with innovative solutions.
+        </p>
+    </section>
+    
+    <!-- Education & Experience Section -->
+    <section id="education-experience" class="section">
+        <div class="flex-container">
+            <div class="education">
+                <h2 class="section-title">Education</h2>
+                <h3 class="section-subtitle">WHAT I'VE LEARNED</h3>
+                
+                <div class="timeline-item">
+                    <h4>2035-2035</h4>
+                    <p><strong>Mumbai University — Mumbai, Maharashtra</strong></p>
+                    <p>Bachelor of Computer Science; DG Ruparel College of Arts, Science, and Commerce
+                    </p>
+                    <p>cGPA: 9.30/10.0</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>2020-2022</h4>
+                    <p><strong>Higher Secondary Certificate (HSC) ; Mumbai, India          </strong></p>
+                    <p>Maharashtra State board</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>2019-2020</h4>
+                    <p><strong>Secondary School Certificate (SSC)
+                    </strong></p>
+                    <p>Khernagar Mun. Sec, School No.1 ,Mumbai , India</p>
+                </div>
+            </div>
+            
+            <div class="experience">
+                <h2 class="section-title">Experience</h2>
+                <h3 class="section-subtitle">WHERE I'VE WORKED</h3>
+                
+                <div class="timeline-item">
+                    <h4>Feb. 2025—Present</h4>
+                    <p><strong>CodSoft , Web Developer</strong></p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>August 2024</h4>
+                    <p><strong>TreeHarmony , Mumbai University Project</strong></p>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills & Languages Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills & Languages</h2>
+        <h3 class="section-subtitle">WHAT I BRING TO THE TABLE</h3>
+        
+        <div class="skill-item">
+            <span class="skill-name">Web development            </span>
+            <span class="skill-bar" style="width: 80%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">Content Writing & Editing  </span>
+            <span class="skill-bar" style="width: 60%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">HTML & CSS                 </span>
+            <span class="skill-bar" style="width: 75%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">CMS & CRM                  </span>
+            <span class="skill-bar" style="width: 60%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">Email Marketing            </span>
+            <span class="skill-bar" style="width: 35%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">Social Media Management    </span>
+            <span class="skill-bar" style="width: 55%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">Image & Design Tools       </span>
+            <span class="skill-bar" style="width: 40%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">English                    </span>
+            <span class="skill-bar" style="width: 80%;"></span>
+        </div>
+        
+        <div class="skill-item">
+            <span class="skill-name">Hindi                      </span>
+            <span class="skill-bar" style="width: 75%;"></span>
+        </div>
+
+        <div class="skill-item">
+            <span class="skill-name">Marathi                    </span>
+            <span class="skill-bar" style="width: 35%;"></span>
+        </div>
+
+        <div class="skill-item">
+            <span class="skill-name">Bhojpuri                   </span>
+            <span class="skill-bar" style="width: 80%;"></span>
+        </div>
+        
+    </section>
+    
+    <!-- Awards & Interests Section -->
+    <section id="awards-interests" class="section">
+        <div class="awards-interests">
+            <div class="awards">
+                <h2 class="section-title">Awards</h2>
+                <h3 class="section-subtitle">WHERE I SHINE</h3>
+                <ul>
+                    <li>BMC Essay Competition winner</li>
+                    <li>English Spoken Class 1st Prize </li>
+                </ul>
+            </div>
+            
+            <div class="interests">
+                <h2 class="section-title">Interests</h2>
+                <h3 class="section-subtitle">OUT OF OFFICE</h3>
+                <div class="interests-grid">
+                    <div>Creative Writing</div>
+                    <div>Cooking</div>
+                    <div>Photography</div>
+                    <div>Yoga</div>
+                    <div>Travel</div>
+                    <div>Reading</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-message">I'd love to hear from you.</div>
+            
+            <div class="contact-links">
+                <span>compareself@gmail.com</span>
+                <span>(91)7839059369</span>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/satyam-gupta-54549b34b"><span>in</span></a>
+                <a href="#"><span>f</span></a>
+                <a href="#"><span>t</span></a>
+                <a href="#"><span>ig</span></a>
+            </div>
+            
+            <a href="https://github.com/SatyamGupta78/Imp-Files/blob/main/Resume_Satyam.pdf" class="btn">Download CV</a>
+            <a href="#" class="back-to-top">↑</a>
+            
+            <div class="copyright">© 2025 By Satyam Gupta. Powered and secured by Friends</div>
+        </div>
+    </footer>
+</body>
+</html>
